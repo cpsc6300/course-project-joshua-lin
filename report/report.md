@@ -52,6 +52,7 @@ The main vision for this project came from https://www.kaggle.com/c/titanic/over
    ```
     
    d. For age and fare, they were converted to bins and then converted into numbers based on which bin they were in. We will just show age since their process was similar:
+   
     ```
     data['Bin_Of_Age'] = pd.cut(data['Age'].astype(int), 5)
     data.loc[ data['Age'] <= 16, 'Age'] = 0
@@ -61,7 +62,9 @@ The main vision for this project came from https://www.kaggle.com/c/titanic/over
     data.loc[ data['Age'] > 64, 'Age'] = 4
     data['Age'] = data['Age'].astype(int)
     ```
-    e. Name had to be changed since it included not just everyone's name, but their title too. The format for name was LastName, Title. RestOfName. We extracted just their title to see if there would be a correlation between one's title and their survival rate. Some titles were also very rare and did not occur often, so for those titles we categorized them into one title called rare_title:
+    
+   e. Name had to be changed since it included not just everyone's name, but their title too. The format for name was LastName, Title. RestOfName. We extracted just their title to see if there would be a correlation between one's title and their survival rate. Some titles were also very rare and did not occur often, so for those titles we categorized them into one title called rare_title:
+    
     ```
     # Extracting the titles by using split between "," and "." since every title is between a LastName, Title. RestOfName
     data['Name'] = data['Name'].str.split(", ", expand=True)[1].str.split(".", expand=True)[0]
@@ -70,11 +73,15 @@ The main vision for this project came from https://www.kaggle.com/c/titanic/over
     # Renaming all the rarely used titles Rare_Title since having too many outliers wouldn't be optimal for our model
     data['Name'] = data['Name'].apply(lambda x: 'Rare_Title' if titles.loc[x] == True else x)
     ```
-    f. Finally, the last thing we had to do for cleaning was converting all the categorical data into numerical. This was achieved through mapping for the names (title), sex, and embarked. We will just show the sex mapping as an example since the other two were very similar:
+    
+   f. Finally, the last thing we had to do for cleaning was converting all the categorical data into numerical. This was achieved through mapping for the names (title), sex, and embarked. We will just show the sex mapping as an example since the other two were very similar:
+   
     ```
     data['Sex'] = data['Sex'].map( {'female': 1, 'male': 0} ).astype(int)
     ```
+    
 4. Now we began modeling. Since this was a classification and regression problem, we used several different relevant models to test for the best acuracy. The models we choose to test were RandomForestClassifier, DecisionTreeClassifier, KNeighborsClassifier, GaussianNB, AdaBoostClassifier, LogisticRegression, and SVC. In addition, since the train data was already provided, we spilt the train data into X_train and y_train.
+
 ```
 # Training data
 X_train = train.drop("Survived", axis=1)
@@ -83,6 +90,7 @@ X_test = test
 ```
 
 5. We built and predicted with each model and saved all relevant information.
+
 ```
 model = model.fit(X_train, y_train)
 all_models[label] = model
