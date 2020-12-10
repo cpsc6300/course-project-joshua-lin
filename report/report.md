@@ -133,7 +133,6 @@ Alone	                0.014423
 Finally, we can see that Name, Sex, and Pclass (ticket class eg. first class, second class, third class) had the highest influence on who survived while Alone, Parach, and SibSp had the lowest importance.
 
 # Conclusions and Future Work
-Summarize your results, the strengths and short-comings of your results, and speculate on how you might address these short-comings if given more time.
 Overall, we cans see that after doing extensive cleaning of the data, the best models for the titanic dataset are the RandomForestClassifier and DecisionTreeClassifier. However, if we want to look at feature importance too, the RandomForestClassifier would be the best model overall. In addition, after viewing the feature importance for the RandomForestClassifier model, we see that Name, Sex, and Pclass have the most influence on who survived.
 
 If given more time, I would try to improve and get an even higher accuracy score from the RandomForestClassifier model. This could be achieved perhaps by cleaning and combining the data even futher. I would definitely drop the SibSp, Parch, and the Alone columns. Perhaps I could encode the sex and name and start playing around with those combinations. For example, female and miss could be combined into one column along with female and mrs. Perhaps futher combinations of columns could result in an even better accuracy model if given more time.
