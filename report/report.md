@@ -1,5 +1,3 @@
-
-
 # TITLE: Predicting Who Survived: A Predictive Model for the Titanic
 ## Team Members: Joshua Lin
 ## Date: 12/10/2020
