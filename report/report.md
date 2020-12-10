@@ -89,7 +89,7 @@ y_train = train["Survived"]
 X_test = test
 ```
 
-5. We built and predicted with each model and saved all relevant information.
+5. We built and saved each model, prediction, and accuracy score.
 
 ```
 model = model.fit(X_train, y_train)
@@ -98,29 +98,56 @@ all_y_pred[label] = model.predict(X_test)
 all_accuracy[label] = round(model.score(X_train, y_train) * 100, 2)
 ```
 
-6. Finally we found out that both RandomForestClassifier and DecisionTreeClassifier tied for the highest accuracy score. at 88.78 (accuracy rate may vary depending on the way you split your train data but generally these two models should have the highest accuracy). Since we wanted to look at the feature importance, we decided to use Random Forest Classifier as out top model.
-
 # Project Trajectory, Results, and Interpretation 
 
-Briefly summarize any changes in your project goals or implementation plans you have made.
-These changes are a natural part of any project, even those that seem the most straightforward at the beginning.
-The story you tell about how you arrived at your results can powerfully illustrate your process. 
+1. Results of each model and it's accuracy:
 
-Next, show your results. How well does your model and/or implementation perform? Did you meet your goals?
+```
+Model	                Accuracy
+RandomForestClassifier	88.78
+DecisionTreeClassifier	88.78
+KNeighborsClassifier	85.30
+SVC	                    83.61
+AdaBoostClassifier	    82.15
+LogisticRegression	    81.03
+GaussianNB	            79.69
+```
 
-Finally, give some interpretation. What do your results mean? What impact will your work have?
+We found out that both RandomForestClassifier and DecisionTreeClassifier tied for the highest accuracy score. at 88.78 (accuracy rate may vary depending on the way you split your train data but generally these two models should have the highest accuracy). Since we wanted to look at the feature importance, we decided to use Random Forest Classifier as our top model.
+
+2. Feature Importance for the RandomForestClassifier:
+
+```
+Feature	                Feature Importance Percentage
+Name	                0.268968
+Sex     	            0.181383
+Pclass  	            0.140127
+Age                 	0.092699
+Fare	                0.091704
+Family_Members_On_Board	0.078564
+Embarked	            0.055715
+SibSp	                0.045075
+Parch	                0.031342
+Alone	                0.014423
+```
+![Feature Importance Bar Chart](../notebooks/Feature%20Importance%20Bar%20Chart.png)
+
+Finally, we can see that Name, Sex, and Pclass (ticket class eg. first class, second class, third class) had the highest influence on who survived while Alone, Parach, and SibSp had the lowest importance.
 
 # Conclusions and Future Work
 Summarize your results, the strengths and short-comings of your results, and speculate on how you might address these short-comings if given more time.
+Overall, we cans see that after doing extensive cleaning of the data, the best models for the titanic dataset are the RandomForestClassifier and DecisionTreeClassifier. However, if we want to look at feature importance too, the RandomForestClassifier would be the best model overall. In addition, after viewing the feature importance for the RandomForestClassifier model, we see that Name, Sex, and Pclass have the most influence on who survived.
+
+If given more time, I would try to improve and get an even higher accuracy score from the RandomForestClassifier model. This could be achieved perhaps by cleaning and combining the data even futher. I would definitely drop the SibSp, Parch, and the Alone columns. Perhaps I could encode the sex and name and start playing around with those combinations. For example, female and miss could be combined into one column along with female and mrs. Perhaps futher combinations of columns could result in an even better accuracy model if given more time.
 
 # References:
 1. Freeman, LD. “A Data Science Framework: To Achieve 99% Accuracy.” Kaggle, 11/22/2017, https://www.kaggle.com/ldfreeman3/a-data-science-framework-to-achieve-99-accuracy.
-2. Kaggle. “Titanic: Machine Learning from Disaster.” Kaggle, 2011, https://www.kaggle.com/c/titanic/data.
-3. Kaggle. “Titanic: Machine Learning from Disaster.” Kaggle, 2011, https://www.kaggle.com/c/titanic.
-4. Sehgal, Manav. “Titanic Data Science Solutions.” Kaggle, 1/29;2017, https://www.kaggle.com/startupsci/titanic-data-science-solutions.
+2. Sehgal, Manav. “Titanic Data Science Solutions.” Kaggle, 1/29;2017, https://www.kaggle.com/startupsci/titanic-data-science-solutions.
 
 # Support Materials
-Provide a list of materials that support your project, for example, the notebooks and data sources.
+Project Idea: Kaggle. “Titanic: Machine Learning from Disaster.” Kaggle, 2011, https://www.kaggle.com/c/titanic/data.
+Data Source: Kaggle. “Titanic: Machine Learning from Disaster.” Kaggle, 2011, https://www.kaggle.com/c/titanic.
+Notebook: https://github.com/cpsc6300/course-project-joshua-lin/tree/main/notebooks
 
 # Declaration of academic integrity and responsibility
 
@@ -131,7 +158,7 @@ With my signature, I certify on my honor that:
 
 The submitted work is my and my teammates' original work and not copied from the work of someone else.
 Each use of existing work of others in the submitted is cited with proper reference.
-Signature: ____________ Date: ______________
+Signature: Joshua Lin Date: 12/10/2020
 ```
 
 # Credit
