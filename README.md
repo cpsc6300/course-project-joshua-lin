@@ -4,7 +4,7 @@
 ## Team Members: Joshua Lin
 ## Date: 12/10/2020
 
-# Probelm Statement and Motivation
+# Problem Statement and Motivation
 This project aims to see whether the prejudices or advantages that certain groups in the 1900s had were the main reasons certain groups survived the Titanic. To achieve this, we will be using a dataset of a portion of the passengers on the Titanic. The data of these passengers will involve their age, gender, social economic class, and whether they survived. We will create a model using this dataset which will predict which groups of people generally survived the Titanic.
 
 # Introduction and Description of Data
